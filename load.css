@@ -1,0 +1,105 @@
+/* Loading Screen */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #001F3F;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.water-drop {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.water-drop .drop {
+    width: 20px;
+    height: 20px;
+    background-color: #00ccff;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: drop-fall 1.5s infinite ease-in-out;
+}
+
+.water-drop .ripple {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #00ccff;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: ripple-effect 1.5s infinite ease-in-out;
+}
+
+.loading-text {
+    font-size: 1.5rem;
+    text-align: center;
+    animation: fade-in 2s infinite alternate;
+    margin-bottom: 10px;
+}
+
+.loading-subtext {
+    font-size: 1rem;
+    text-align: center;
+    animation: fade-in 2s infinite alternate;
+    color: #00ccff;
+}
+
+/* Drop Animation */
+@keyframes drop-fall {
+    0% {
+        top: 0;
+        opacity: 1;
+    }
+    50% {
+        top: 50%;
+        opacity: 0.5;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+/* Ripple Animation */
+@keyframes ripple-effect {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Fade-in Animation for Text */
+@keyframes fade-in {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Hide Loading Screen */
+body.loaded #loading-screen {
+    display: none;
+}
